@@ -1,0 +1,18 @@
+.flex {
+  display: flex;
+}
+
+.round {
+  width: 50px;
+  aspect-ratio: 1/1;
+  border-radius: 50%;
+  border: 1px outset gray;
+}
+
+.green {
+  background-color: greenyellow;
+}
+
+.red {
+  background-color: red;
+}

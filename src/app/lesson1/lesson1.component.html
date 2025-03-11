@@ -1,0 +1,67 @@
+<h2>Язык (возможности) шаблонов</h2>
+<h3>Связывание</h3>
+2+2 = {{2+2}}<br />
+Hello, {{name}}!!!<br />
+Hello, {{name.toUpperCase()}}!!!<br />
+<div title="{{ name }}">подсказка</div>
+<div [title]="name">подсказка</div>
+<input value="{{val}}">
+<input [value]="val">
+<button (click)="toggleCondition()">{{condition}}</button>
+<input [(ngModel)]="val" />
+<input [(ngModel)]="val" />
+
+<h3>Классы и стили</h3>
+<div class="flex" (click)="toggleCondition()">
+  <div class="round" [class.green]="condition"></div>
+  <div class="round" [class.red]="!condition"></div>
+  {{condition}}
+</div>
+<div [style.fontSize.px]="10*3" class="flex" (click)="toggleCondition()">
+  <div [class]="{round:true,green:condition}"></div>
+  <div [class]="{round:true, red:!condition}"></div>
+  {{condition}}
+</div>
+
+<h3>Директивы</h3>
+condition =<ng-template [ngIf]="condition"> TRUE!!!</ng-template> <br />
+condition =<span *ngIf="condition"> TRUE!!!</span><br />
+condition = @if (condition) {<span> TRUE!!!</span>}
+<hr />
+<ol>
+  <ng-template ngFor let-item [ngForOf]="items">
+    <li>{{item}}</li>
+  </ng-template>
+</ol>
+
+<span *ngFor="let item of items; let i = index">
+  {{ i }}-{{ item }},
+</span><br />
+
+@for (item of items;track item) {<span>{{item}}, </span>}
+<hr>
+2+2=
+<span [ngSwitch]="2 + 2">
+  <b *ngSwitchCase="3">3</b>
+  <b *ngSwitchCase="4">4</b>
+  <b *ngSwitchCase="5">5</b>
+</span><br />
+
+2 + 2 =
+@switch (2+2) {
+  @case (3) {<b>3</b>}
+  @case (4) {<b>4</b>}
+  @case (5) {<b>5</b>}
+}
+
+<h3>Pipes!</h3>
+Pipe currency: <span>{{ 1 / 7 | currency }}</span><br />
+Pipe percent: <span>{{ 1 / 7 | percent }}</span><br />
+Pipe uppercase: <span>{{ 'aaaa' | uppercase }}</span><br />
+Pipe lowercase: <span>{{ 'ZZZZ' | lowercase }}</span><br />
+Pipe date: <span>{{ today | date }}</span><br />
+Pipe date: <span>{{ today | date: 'dd/MM/yyyy' }}</span><br />
+Pipe slice: <span>{{ 'Hello World!' | slice: 6:11 }}</span><br />
+Pipe number: <span>{{ PI | number: '3.5-5' }}</span><br />
+
+
