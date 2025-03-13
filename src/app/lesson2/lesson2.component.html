@@ -1,0 +1,32 @@
+<h1>Связывание</h1>
+<input [(ngModel)]="parentProp" placeholder="parentValue">
+
+<h2>parent => child </h2>
+<section [style.background-color]="'lightgray'">
+  <les2-inp />
+  <les2-inp inp="parent_literal" />
+  <les2-inp [inp]="parentProp" />
+</section>
+
+
+<h2>parent => child (setter)</h2>
+<section [style.background-color]="'lightgreen'">
+  <les2-inp-setter [inp]="parentProp" />
+</section>
+<hr />
+
+<h2>parent &LT;= child </h2>
+<div [style.background-color]="'lightblue'">
+  <les2-out (out)="addItemToStart($event)" />
+  <ol role="list">
+    @for (item of arr;track item){
+    <li>{{item}}</li> }
+  </ol>
+  <les2-out (out)="addItemToEnd($event)" />
+</div>
+<hr />
+
+<h2>parent &LT;=&GT; child </h2>
+<section [style.background-color]="'pink'">
+<les2-two-way [(tw)]="parentProp" />
+</section>
