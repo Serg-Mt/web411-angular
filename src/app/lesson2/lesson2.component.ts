@@ -68,9 +68,6 @@ export class TwoWayComponent {
   @Output() twChange = new EventEmitter();
 }
 
-
-
-
 @Component({
   // selector: 'app-lesson2',
   imports: [FormsModule, InpComponent, InpComponentSetter, OutComponent, TwoWayComponent],
@@ -79,7 +76,7 @@ export class TwoWayComponent {
 })
 export class Lesson2Component {
   parentProp = '_parent_';
-  arr:string[] = [/* 'a', 'b', 'c' */];
+  arr: string[] = [/* 'a', 'b', 'c' */];
   addItemToStart(item: string) {
     this.arr.unshift(item);
   }

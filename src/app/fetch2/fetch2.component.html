@@ -1,0 +1,12 @@
+<h1>Users:</h1>
+@if (users | async; as _users) {
+<ol>
+  @for(user of _users;track user.id){
+  <li>
+    {{ user.name }} - {{user.email}}
+  </li>
+  }
+</ol>
+} @else {
+<p>loading...</p>
+}
